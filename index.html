@@ -93,7 +93,40 @@ function toggleMode() {
   document.getElementById('btnMode').textContent = isDark ? '☀️ Light mode' : '🌙 Dark mode';
 }
 
-const ptContent = data;
+const ptContent = {
+  summary: `Product Designer com +5 anos de experiência, transformando problemas complexos em soluções viáveis nos mercados B2B e B2C. Minha abordagem é profundamente interdisciplinar, integrando times, aplicando UX Research, Análise de Dados e Inteligência Artificial para criar produtos que não apenas funcionam, mas antecipam o comportamento do usuário, alinhando estrategicamente com os objetivos da empresa.<br><br>Utilizo IA de ponta a ponta no processo de design, da pesquisa à entrega, acelerando e aprofundando cada etapa: pesquisa e síntese de dados, documentação, prototipação, testes de usabilidade e até desenvolvimento front-end e back-end com vibe coding. Ferramentas como Cursor e integrações com ecossistemas de desenvolvimento real fazem parte do meu fluxo, permitindo protótipos funcionais conectados a ambientes reais de teste.<br><br>Tenho experiência sólida em análise de dados com Power BI, Pendo, Google Analytics, entre outras, o que me permite tomar decisões de design orientadas por dados e identificar oportunidades de melhoria com precisão. Ao longo da minha carreira, atuei em produtos de Legal Design, Análise de Crédito, Marketing Analytics, CRM, Search Sales, Turismo, entre outros, bagagem que me deu uma perspectiva única sobre como aplicar Design e Dados em contextos críticos em pouco tempo.`,
+  sections: { exp: "Experiências", edu: "Jornada Acadêmica", extras: "Extras", certs: "Certificações" },
+  jobs: [
+    {
+      company: "Neoway | B3 | Bolsa de Valores do Brasil", total: "4 anos e 9 meses",
+      roles: [
+        { role: "Product Designer | Sales & Marketing", period: "nov de 2024 – abril de 2026", desc: `Criação de experiências de análise de dados para produtos de Sales & Marketing, com ênfase em usabilidade, eficiência operacional e suporte à tomada de decisão estratégica.<ul><li>Inteligência de Mercado: Segmentação, Definição de ICP e Análise de Mercado Endereçável (TAM).</li><li>Go-to-Market & Vendas: Estratégias comerciais, prospecção inbound/outbound e expansão de carteira.</li><li>Digital Marketing: Criação de audiências qualificadas e otimização da performance de campanhas.</li></ul>` },
+        { role: "Product Designer | Application Platform", period: "set de 2023 – nov de 2024 · 1 ano e 3 meses", desc: "Criação de experiências escaláveis e flexíveis para a plataforma Neoway, com atuação estratégica alinhada às metas de design e integrada ao time de design system." },
+        { role: "Product Designer | B3 | Credit Management", period: "maio de 2023 – set de 2023 · 5 meses", desc: "Atuação na BU de Credit Management B3, integrando big data e redes neurais para aprimorar a experiência do usuário nas soluções de crédito." },
+        { role: "Product Designer | Legal Analysis", period: "março de 2022 – maio de 2023 · 1 ano e 3 meses", desc: "Liderança de inovação integrando IA à gestão de processos jurídicos. Utilizei Big Data, Legal Design e Visual Law para criar interfaces claras e dashboards intuitivos." }
+      ]
+    },
+    { company: "Bizut – Sistema de Recrutamento e Seleção", total: "1 ano", roles: [{ role: "UX/UI Designer", period: "set de 2021 – ago de 2022", desc: "Criação da Rhenion, plataforma pioneira em vídeo entrevistas com neurociência e IA para detecção de emoções e análise de personalidade." }] },
+    { company: "Tookkan", total: "11 meses", roles: [{ role: "UX/UI Designer", period: "maio de 2021 – março de 2022", desc: "Criação de interfaces para o nicho turístico. App validado e apoiado pelo Ministério do Turismo no Brasil." }] },
+    { company: "Schiftr", total: "11 meses", roles: [{ role: "UX/UI Designer", period: "jan de 2021 – nov de 2021", desc: "Design de interfaces para app americano de corrida e ciclismo (Android e iOS), do protótipo à implementação." }] }
+  ],
+  edu: [
+    { name: "Design Gráfico – IBMR", period: "2021 – 2026" },
+    { name: "Medicina – Estácio de Sá", period: "2018 – 2020" },
+    { name: "Ciências Biomédicas – UNIRIO", period: "2014 – 2018" }
+  ],
+  extras: "+15 Certificados de Cursos: Data Visualization, Design Thinking, Design e Negócio, Métricas de Negócios, Product Discovery, Figma, Métricas ágeis, UX Analytical and Research, entre outros.",
+  certs: [
+    { title: "AI Product Specialist", issuer: "PM3", meta: "mai de 2026 · 70h" },
+    { title: "Especialista em Design de Produto", issuer: "PM3", meta: "mai de 2026 · 70h" },
+    { title: "Curso de Product Discovery", issuer: "PM3", meta: "mai de 2026 · 60h" },
+    { title: "Curso de Product Manager", issuer: "PM3", meta: "jun de 2025 · 70h" },
+    { title: "Curso de Product Design", issuer: "PM3", meta: "set de 2025 · 60h" },
+    { title: "Curso de Product Analytics", issuer: "PM3", meta: "abr de 2025 · 70h" },
+    { title: "Acessibilidade Digital (WCAG 2.2) — Marcelo Sales", issuer: "PM3", meta: "mai de 2025 · 40h" },
+    { title: "Escola Britânica de Artes Criativas e Tecnologia", issuer: "Certificação", meta: "ago/2021 – jun/2022 · 80h" }
+  ]
+};
 
 function renderContent(d) {
   const c = document.getElementById('resumeContent');

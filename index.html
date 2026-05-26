@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nathalia Maciel – Product Designer</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #f5f5f5; --bg2: #ffffff; --bg3: #e8e8e8;
+    --green: #1a9e63; --purple: #7c3aed; --text: #111111;
+    --muted: #555555; --desc: #444444; --border: #dddddd;
+  }
+  .dark {
+    --bg: #0d0d0d; --bg2: #161616; --bg3: #1e1e1e;
+    --green: #3dffa0; --purple: #c89eff; --text: #ffffff;
+    --muted: #b0b0b0; --desc: #c0c0c0; --border: #2a2a2a;
+  }
+  body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; transition: background 0.2s; min-height: 100vh; padding: 2rem 1rem; }
+  .page { max-width: 860px; margin: 0 auto; }
+  .top-bar { display: flex; justify-content: flex-end; gap: 8px; margin-bottom: 1.5rem; align-items: center; flex-wrap: wrap; }
+  .ctrl-btn { padding: 6px 14px; border-radius: 20px; border: 1px solid #888; background: #ffffff; color: #111111; font-size: 12px; cursor: pointer; font-family: inherit; transition: opacity 0.15s; }
+  .ctrl-btn:hover { opacity: 0.8; }
+  .ctrl-btn.active-lang { border-color: #333; font-weight: 600; }
+  .lang-status { font-size: 12px; color: var(--muted); }
+  .header { background: var(--bg2); border: 1px solid var(--border); padding: 2rem; border-radius: 12px; margin-bottom: 2rem; }
+  .name { font-size: 26px; color: var(--text); margin-bottom: 2px; }
+  .name strong { font-weight: 700; }
+  .title-role { font-size: 14px; color: var(--green); margin-bottom: 12px; letter-spacing: 0.05em; }
+  .contacts { display: flex; flex-wrap: wrap; gap: 10px; font-size: 12px; color: var(--muted); }
+  .contacts a { color: var(--muted); text-decoration: none; }
+  .contacts a:hover { color: var(--green); }
+  .section { margin-bottom: 2rem; }
+  .section-title { font-size: 11px; font-weight: 500; color: var(--green); border-bottom: 1px solid var(--border); padding-bottom: 6px; margin-bottom: 1rem; letter-spacing: 0.12em; text-transform: uppercase; }
+  .summary { font-size: 13px; line-height: 1.75; color: var(--desc); margin-bottom: 2rem; }
+  .job { margin-bottom: 1.5rem; padding-left: 1rem; border-left: 1.5px solid var(--border); transition: border-color 0.2s; }
+  .job:hover { border-left-color: var(--green); }
+  .job-header { display: flex; justify-content: space-between; align-items: baseline; }
+  .job-company { font-size: 14px; font-weight: 500; color: var(--text); }
+  .job-total { font-size: 11px; color: var(--purple); font-style: italic; }
+  .job-role { font-size: 12px; font-weight: 500; color: var(--green); margin-top: 10px; margin-bottom: 2px; }
+  .job-period { font-size: 11px; color: var(--muted); }
+  .job-desc { font-size: 12px; line-height: 1.65; color: var(--desc); margin-top: 5px; }
+  .job-desc ul { padding-left: 1.2rem; margin-top: 4px; }
+  .job-desc li { margin-bottom: 3px; }
+  .edu-item { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; font-size: 12px; padding: 8px 10px; background: var(--bg2); border-radius: 6px; border: 1px solid var(--border); }
+  .edu-name { font-weight: 500; color: var(--text); }
+  .edu-period { color: var(--purple); font-style: italic; font-size: 11px; white-space: nowrap; margin-left: 8px; }
+  .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); gap: 10px; }
+  .cert-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; transition: border-color 0.2s; }
+  .cert-card:hover { border-color: var(--green); }
+  .cert-title { font-size: 12px; font-weight: 500; color: var(--text); margin-bottom: 4px; line-height: 1.4; }
+  .cert-issuer { font-size: 11px; color: var(--purple); margin-bottom: 2px; }
+  .cert-meta { font-size: 11px; color: var(--muted); }
+  .cert-badge { display: inline-block; font-size: 10px; background: rgba(26,158,99,0.08); color: var(--green); border: 1px solid rgba(26,158,99,0.25); border-radius: 4px; padding: 2px 6px; margin-top: 5px; }
+  .dark .cert-badge { background: rgba(61,255,160,0.08); border-color: rgba(61,255,160,0.2); }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .extras-text { font-size: 12px; color: var(--desc); line-height: 1.7; }
+  .skeleton { background: var(--bg3); border-radius: 4px; height: 13px; margin-bottom: 8px; animation: pulse 1.2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  @media (max-width: 600px) { .two-col { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="top-bar">
+    <span class="lang-status" id="langStatus"></span>
+    <button class="ctrl-btn" id="btnMode" onclick="toggleMode()">🌙 Dark mode</button>
+    <button class="ctrl-btn active-lang" id="btnPT" onclick="setLang('pt')">🇧🇷 Português</button>
+    <button class="ctrl-btn" id="btnEN" onclick="setLang('en')">🇺🇸 English</button>
+  </div>
+
+  <div class="header">
+    <div class="name"><strong>Nath</strong><span>alia Maciel</span></div>
+    <div class="title-role">product designer</div>
+    <div class="contacts">
+      <span>✉ contatonathaliamaciel@gmail.com</span>
+      <span>📞 21 978456996</span>
+      <a href="https://www.linkedin.com/in/uxnathaliamaciel/" target="_blank">LinkedIn ↗</a>
+      <a href="https://uxfol.io/nathaliamaciel" target="_blank">Portfólio ↗</a>
+    </div>
+  </div>
+
+  <div id="resumeContent"></div>
+</div>
+
+<script>
+let isDark = false, currentLang = 'pt', enC = null;
+
+function toggleMode() {
+  isDark = !isDark;
+  document.body.classList.toggle('dark', isDark);
+  document.getElementById('btnMode').textContent = isDark ? '☀️ Light mode' : '🌙 Dark mode';
+}
+
+const ptContent = data;
+
+function renderContent(d) {
+  const c = document.getElementById('resumeContent');
+  let h = `<div class="summary">${d.summary}</div>`;
+  h += `<div class="section"><div class="section-title">${d.sections.exp}</div>`;
+  d.jobs.forEach(j => {
+    h += `<div class="job"><div class="job-header"><div class="job-company">${j.company}</div><div class="job-total">${j.total}</div></div>`;
+    j.roles.forEach(r => { h += `<div class="job-role">${r.role}</div><div class="job-period">${r.period}</div><div class="job-desc">${r.desc}</div>`; });
+    h += `</div>`;
+  });
+  h += `</div><div class="two-col"><div class="section"><div class="section-title">${d.sections.edu}</div>`;
+  d.edu.forEach(e => { h += `<div class="edu-item"><span class="edu-name">${e.name}</span><span class="edu-period">${e.period}</span></div>`; });
+  h += `</div><div class="section"><div class="section-title">${d.sections.extras}</div><div class="extras-text">${d.extras}</div></div></div>`;
+  h += `<div class="section"><div class="section-title">${d.sections.certs}</div><div class="cert-grid">`;
+  const badge = currentLang === 'pt' ? 'Credencial verificada' : 'Verified credential';
+  d.certs.forEach(cert => { h += `<div class="cert-card"><div class="cert-title">${cert.title}</div><div class="cert-issuer">${cert.issuer}</div><div class="cert-meta">${cert.meta}</div><div class="cert-badge">✓ ${badge}</div></div>`; });
+  h += `</div></div>`;
+  c.innerHTML = h;
+}
+
+function showSkeleton() {
+  let s = '';
+  for (let i = 0; i < 20; i++) s += `<div class="skeleton" style="width:${65+Math.random()*30}%"></div>`;
+  document.getElementById('resumeContent').innerHTML = `<div style="padding:1rem 0">${s}</div>`;
+}
+
+async function translateToEnglish() {
+  document.getElementById('langStatus').textContent = 'Translating...';
+  showSkeleton();
+  try {
+    const res = await fetch("https://api.anthropic.com/v1/messages", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ model: "claude-sonnet-4-20250514", max_tokens: 4000, messages: [{ role: "user", content: `Translate this resume JSON to professional English. Return ONLY valid JSON, same structure, no markdown.\n\n${JSON.stringify(ptContent)}` }] })
+    });
+    const d = await res.json();
+    enC = JSON.parse(d.content.map(i => i.text||'').join('').replace(/```json|```/g,'').trim());
+    document.getElementById('langStatus').textContent = '';
+    renderContent(enC);
+  } catch(e) {
+    document.getElementById('langStatus').textContent = 'Erro. Tente novamente.';
+    setLang('pt');
+  }
+}
+
+function setLang(lang) {
+  if (lang === currentLang) return;
+  currentLang = lang;
+  document.getElementById('btnPT').classList.toggle('active-lang', lang==='pt');
+  document.getElementById('btnEN').classList.toggle('active-lang', lang==='en');
+  if (lang==='pt') { document.getElementById('langStatus').textContent=''; renderContent(ptContent); }
+  else enC ? renderContent(enC) : translateToEnglish();
+}
+
+render();
+renderContent(ptContent);
+</script>
+</body>
+</html>
